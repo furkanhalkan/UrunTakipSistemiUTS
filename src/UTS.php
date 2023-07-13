@@ -745,6 +745,541 @@ class UTS
         return $response; 
     }
 
+    public function HastaninVucudundanCikarmaBildirimi(string $uno, string $lno='', string $sno='', string $haa='', string $has='', int $tkn='', int $ykn='', string $pan='', string $grk, string $dga='', DateTime $git, int $ktn='', string $tur, string $dta='', string $ydm='')
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/hastaninVucudundanCikarma/ekle';
+        $data=array(
+            'UNO'=>$uno,
+            'LNO'=>$lno,
+            'SNO'=>$sno,
+            'HAA'=>$haa,
+            'HAS'=>$has,
+            'TKN'=>$tkn,
+            'YKN'=>$ykn,
+            'PAN'=>$pan,
+            'GRK'=>$grk,
+            'DGA'=>$dga,
+            'GIT'=>$git->format('Y-m-d'),
+            'KTN'=>$ktn,
+            'TUR'=>$tur,
+            'DTA'=>$dta,
+            'YDM'=>$ydm
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function EssizKimlikIleHastaninVucudundanCikarmaBildirimi(string $udi, string $haa='', string $has='', int $tkn='', int $ykn='', string $pan='', string $grk, string $dga='', DateTime $git, int $ktn='', string $tur, string $dta='', string $ydm='')
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/hastaninVucudundanCikarma/ekle/essizKimlik';
+        $data=array(
+            'UDI'=>$udi,
+            'HAA'=>$haa,
+            'HAS'=>$has,
+            'TKN'=>$tkn,
+            'YKN'=>$ykn,
+            'PAN'=>$pan,
+            'GRK'=>$grk,
+            'DGA'=>$dga,
+            'GIT'=>$git->format('Y-m-d'),
+            'KTN'=>$ktn,
+            'TUR'=>$tur,
+            'DTA'=>$dta,
+            'YDM'=>$ydm
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function EnvanterBildirimi(int $uik, string $uno, string $lno='', string $sno, DateTime $ent, DateTime $skt, DateTime $sbt)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/envanter/ekle';
+        $data=array(
+            'UIK'=>$uik,
+            'UNO'=>$uno,
+            'LNO'=>$lno,
+            'SNO'=>$sno,
+            'ENT'=>$ent->format('Y-m-d'),
+            'SKT'=>$skt->format('Y-m-d'),
+            'SBT'=>$sbt->format('Y-m-d')
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function TuketimBildirimi(string $uno, string $lno='', string $sno, int $tyk='', DateTime $git, int $adt)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/tuketim/ekle';
+        $data=array(
+            'UNO'=>$uno,
+            'LNO'=>$lno,
+            'SNO'=>$sno,
+            'TYK'=>$tyk,
+            'GIT'=>$git->format('Y-m-d'),
+            'ADT'=>$adt,
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function HizmetSunumBildirimi(string $uno, string $lno='', string $sno, DateTime $git='', int $kun, int $bno)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/hizmetSunum/ekle';
+        $data=array(
+            'UNO'=>$uno,
+            'LNO'=>$lno,
+            'SNO'=>$sno,
+            'GIT'=>$git->format('Y-m-d'),
+            'KUN'=>$kun,
+            'BNO'=>$bno,
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function HizmetSunumSonlandirmaBildirimi(string $bid)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/hizmetSunum/sonlandir';
+        $data=array(
+            'BID'=>$bid
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    /*
+    TODO: Iptal Bildirim Alanlari Eklenecek Sayfa:96
+    */
+
+    public function TekilUrunSorgula(string $uno, string $lno='', string $sno='')
+    {
+        $urls=$this->Url.'UTS/uh/rest/tekilUrun/sorgula';
+        $data=array(
+            'UNO'=>$uno,
+            'LNO'=>$lno,
+            'SNO'=>$sno
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function EssizKimlikBilgisiIleTekilUrunSorgula(string $udi)
+    {
+        $urls=$this->Url.'UTS/uh/rest/tekilUrun/sorgula/essizKimlik';
+        $data=array(
+            'UDI'=>$udi
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function UreticiIthalatciTekilUrunSorgula(string $uno, string $lno='', string $sno='', int $san=1)
+    {
+        $urls=$this->Url.'UTS/uh/rest/tekilUrun/uretici/sorgula';
+        $data=array(
+            'UNO'=>$uno,
+            'LNO'=>$lno,
+            'SNO'=>$sno,
+            'SAN'=>$san
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function UreticiIthalatciSisteminDisinaCikmisTekilUrunSorgula(string $uno, string $lno='', string $sno='', int $san=1)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/ureticiIthalatci/tekilUrun/sistemDisinaCikan/sorgula';
+        $data=array(
+            'UNO'=>$uno,
+            'LNO'=>$lno,
+            'SNO'=>$sno,
+            'SAN'=>$san
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function AskidakiTekilUrunSorgula(int $kun, string $uno='', string $lno='', string $sno='', int $san=1)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/verme/askidakiler';
+        $data=array(
+            'KUN'=>$kun,
+            'UNO'=>$uno,
+            'LNO'=>$lno,
+            'SNO'=>$sno,
+            'SAN'=>$san
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function BildirimSorgula(string $uno, string $lno='', string $sno='', int $san=1)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/sorgula';
+        $data=array(
+            'UNO'=>$uno,
+            'LNO'=>$lno,
+            'SNO'=>$sno,
+            'SAN'=>$san
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function KabulEdilecekTekilUrunSorgula(int $gkk, string $bno, string $uno='', string $bid='', int $san=1)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/alma/bekleyenler/sorgula';
+        $data=array(
+            'GKK'=>$gkk,
+            'BNO'=>$bno,
+            'UNO'=>$uno,
+            'BID'=>$bid,
+            'SAN'=>$san
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function KabulEdilecekGeriCekilmisTekilUrunSorgula(int $gkk, string $bno, string $uno='', string $bid='', int $san=1)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/geriCekmeAlma/bekleyenler';
+        $data=array(
+            'GKK'=>$gkk,
+            'BNO'=>$bno,
+            'UNO'=>$uno,
+            'BID'=>$bid,
+            'SAN'=>$san
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function TekilUrununKaynaginiSorgula(string $uno, string $sno)
+    {
+        $urls=$this->Url.'UTS/uh/rest/tekilUrun/kaynak/sorgula';
+        $data=array(
+            'UNO'=>$uno,
+            'SNO'=>$sno
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function PiyasayaArzBilgileriSorgula(string $pab, int $urt)
+    {
+        $urls=$this->Url.'UTS/uh/rest/piyasayaArzBilgisi/sorgula';
+        $data=array(
+            'PAB'=>$pab,
+            'URT'=>$urt
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function BildirimveTekilUrunDetaySorgula(string $bid)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/detay/sorgula';
+        $data=array(
+            'BID'=>$bid
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function StokYapilabilirTekilUrunBilgileriniSorgula(string $uno, string $sno='', string $lno='', int $adt=10, string $off='')
+    {
+        $urls=$this->Url.'UTS/uh/rest/stokYapilabilirTekilUrun/sorgula';
+        $data=array(
+            'UNO'=>$uno,
+            'SNO'=>$sno,
+            'LNO'=>$lno,
+            'ADT'=>$adt,
+            'OFF'=>$off
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function AyrintiliTekilUrunSorgulama(string $uno, string $sno='', string $lno='', string $udi='', int $uik='', int $adt=15, int $say=0)
+    {
+        $urls=$this->Url.'UTS/rest/ayrintiliTekilUrun/sorgula';
+        $data=array(
+            'UNO'=>$uno,
+            'SNO'=>$sno,
+            'LNO'=>$lno,
+            'UDI'=>$udi,
+            'UIK'=>$uik,
+            'ADT'=>$adt,
+            'SAY'=>$say
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function AyrintiliBildirimSorgulama(string $uno, string $sno='', string $lno='', string $udi='', string $bti='', string $bdr='', string $bkt='', string $tkn='', int $dkn='', string $bno='', string $bid='', string $bzb='', string $bzs='', int $adt='', int $say=0)
+    {
+        $urls=$this->Url.'UTS/uh/rest/ayrintiliBildirim/sorgula';
+        $data=array(
+            'UNO'=>$uno,
+            'SNO'=>$sno,
+            'LNO'=>$lno,
+            'UDI'=>$udi,
+            'BTI'=>$bti,
+            'BDR'=>$bdr,
+            'BKT'=>$bkt,
+            'TKN'=>$tkn,
+            'DKN'=>$dkn,
+            'BNO'=>$bno,
+            'BID'=>$bid,
+            'BZB'=>$bzb,
+            'BZS'=>$bzs,
+            'ADT'=>$adt,
+            'SAY'=>$say
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function EksikAlmaBildirimleriniGoruntule(int $adt, string $off)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/verme/eksikAlma/sorgula/offset';
+        $data=array(
+            'ADT'=>$adt,
+            'OFF'=>$off
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function EksikAlmaBildirimiGorulmeDurumunuGuncelle(string $bid, string $gdr)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/verme/eksikAlma/gorulmeDurumunuGuncelle';
+        $data=array(
+            'BID'=>$bid,
+            'GDR'=>$gdr
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function AlmakIstemiyorumOlarakIsaretle(string $bid)
+    {
+        $urls=$this->Url.'UTS/uh/rest/almakIstemiyorum/almakIstemiyorumOlarakIsaretle';
+        $data=array(
+            'BID'=>$bid
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function AlmakIstiyorumOlarakIsaretle(string $bid)
+    {
+        $urls=$this->Url.'UTS/uh/rest/almakIstemiyorum/almakIstiyorumOlarakIsaretle';
+        $data=array(
+            'BID'=>$bid
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function AlinmakIstenmeyenVermeBildirimlerimiSorgula(int $adt, string $off='')
+    {
+        $urls=$this->Url.'UTS/uh/rest/almakIstemiyorum/sorgula/alinmakIstenmeyenVermeBildirimlerim';
+        $data=array(
+            'ADT'=>$adt,
+            'OFF'=>$off
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function AlmakIStemedigimVermeBildirimleriniSorgula(int $adt, string $off='')
+    {
+        $urls=$this->Url.'UTS/uh/rest/almakIstemiyorum/sorgula/almakIstemedigimVermeBildirimlerim';
+        $data=array(
+            'ADT'=>$adt,
+            'OFF'=>$off
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function PaketEkle(string $pno, string $tip='', int $kno, string $pli='', array $tul='')
+    {
+        $urls=$this->Url.'UTS/uh/rest/pts/paket/ekle';
+        $data=array(
+            'PNO'=>$pno,
+            'TIP'=>$tip,
+            'KNO'=>$kno,
+            'PLI'=>$pli,
+            'TUL'=>$tul
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function PaketSil(string $pno)
+    {
+        $urls=$this->Url.'UTS/uh/rest/pts/paket/sil';
+        $data=array(
+            'PNO'=>$pno
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function PaketGetir(string $pno)
+    {
+        $urls=$this->Url.'UTS/uh/rest/pts/paket/getir';
+        $data=array(
+            'PNO'=>$pno
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function KurumaGelenPaketiOkunduIsaretle(string $pno, int $kno)
+    {
+        $urls=$this->Url.'UTS/uh/rest/pts/gelenPaket/oku';
+        $data=array(
+            'PNO'=>$pno,
+            'KNO'=>$kno
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function KurumaGelenPaketiGetir(string $pno, int $kno)
+    {
+        $urls=$this->Url.'UTS/uh/rest/pts/gelenPaket/getir';
+        $data=array(
+            'PNO'=>$pno,
+            'KNO'=>$kno
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function KurumaGelenPaketleriSorgula(DateTime $ekt='', DateTime $ebt='', string $okb='', int $kno='')
+    {
+        $urls=$this->Url.'UTS/uh/rest/pts/gelenPaket/sorgula';
+        $data=array(
+            'EKT'=>$ekt->format('Y-m-d'),
+            'EBT'=>$ebt->format('Y-m-d'),
+            'OKB'=>$okb,
+            'KNO'=>$kno
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function FirmaSorgulama(string $mrs='', string $vrg, string $unv='', int $krn='', string $cky='')
+    {
+        $urls=$this->Url.'UTS/rest/kurum/firmaSorgula';
+        $data=array(
+            'MRS'=>$mrs,
+            'VRG'=>$vrg,
+            'UNV'=>$unv,
+            'KRN'=>$krn,
+            'CKY'=>$cky
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function UrunSorgulama(string $uno)
+    {
+        $urls=$this->Url.'UTS/rest/tibbiCihaz/urunSorgula';
+        $data=array(
+            'UNO'=>$uno
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response;  
+    }
+
+    public function ButunUrunleriSorgulama(int $sayfabuyuklugu, int $sayfaindeksi, DateTime $baslangictarihi='', DateTime $bitistarihi='')
+    {
+        $urls=$this->Url.'UTS/rest/tibbiCihaz/tibbiCihazSorgula';
+        $data=array(
+            'sayfaBuyuklugu'=>$sayfabuyuklugu,
+            'sayfaIndeksi'=>$sayfaindeksi,
+            'baslangicTarihi'=>$baslangictarihi->format('d/m/Y'),
+            'bitisTarihi'=>$bitistarihi->format('d/m/Y')
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
     private function PostMethod($data, $url)
     {
         if (empty($data) || empty($url)) 
