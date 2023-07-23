@@ -60,7 +60,7 @@ class UTS
         }
     }
 
-    public function UretimBildirimi(string $uno,string $lno='',string $sno='',DateTime $urt, DateTime $skt='',int $adt,string $udi='',array $sip='',array $kus='',array $gtk='')
+    public function UretimBildirimi(string $uno,string $lno='',string $sno='',DateTime $urt, DateTime $skt=null,int $adt,string $udi='',string $sip='',string $kus='',string $gtk='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/uretim/ekle';
         $data = array(
@@ -81,7 +81,7 @@ class UTS
         return $response;
     }
 
-    public function IthalatBildirimi(string $uno, string $lno='',string $sno='',DateTime $urt,DateTime $skt='',DateTime $itt='',int $adt='',string $udi='',int $ieu,int $meu,string $gbn='',array $kus='',array $gtk='')
+    public function IthalatBildirimi(string $uno, string $lno='',string $sno='',DateTime $urt,DateTime $skt=null,DateTime $itt=null,int $adt=null,string $udi='',int $ieu,int $meu,string $gbn='',string $kus='',string $gtk='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/ithalat/ekle';
         $data=array(
@@ -105,7 +105,7 @@ class UTS
         return $response;
     }
 
-    public function YetkiliBayiIleIthalatBildirimi(int $uik, string $uno, string $lno='', string $sno='', DateTime $urt, DateTime $skt='', DateTime $itt='', int $adt, string $udi='', int $ieu, int $meu, string $gbn='', array $sip='', array $kus='', array $gtk='')
+    public function YetkiliBayiIleIthalatBildirimi(int $uik, string $uno, string $lno='', string $sno='', DateTime $urt, DateTime $skt=null, DateTime $itt=null, int $adt, string $udi='', int $ieu, int $meu, string $gbn='', string $sip='', string $kus='', string $gtk='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/ithalat/yetkiliBayiIle/ekle';
         $data=array(
@@ -131,7 +131,7 @@ class UTS
         return $response;
     }
 
-    public function VermeBildirimi(string $uno, string $lno='', string $sno='', int $adt, int $kun, string $ben='', string $bno, DateTime $git='')
+    public function VermeBildirimi(string $uno, string $lno='', string $sno='', int $adt, int $kun, string $ben='', string $bno, DateTime $git=null)
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/verme/ekle';
         $data=array(
@@ -183,7 +183,7 @@ class UTS
         return $response;
     }
 
-    public function AlmaBildirimi(int $vbi='', int $adt, int $gkk='', string $udi='', string $uno='', string $lno='', string $sno='')
+    public function AlmaBildirimi(int $vbi=null, int $adt, int $gkk=null, string $udi='', string $uno='', string $lno='', string $sno='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/alma/ekle';
         $data=array(
@@ -201,7 +201,7 @@ class UTS
         return $response;
     }
 
-    public function EssizKimlikIleAlmaBildirimi(string $udi,int $adt, int $gkk='')
+    public function EssizKimlikIleAlmaBildirimi(string $udi,int $adt, int $gkk=null)
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/alma/ekle/essizKimlik';
         $data=array(
@@ -233,7 +233,7 @@ class UTS
         return $response;
     }
 
-    public function EssizKimlikBilgisiIleTanimsizYereVermeBildirimi(string $udi, int $adt, string $ben='', int $vkn, int $men='', int $tkn='', int $mek='', int $odk='', string $bno)
+    public function EssizKimlikBilgisiIleTanimsizYereVermeBildirimi(string $udi, int $adt, string $ben='', int $vkn, int $men=null, int $tkn=null, int $mek=null, int $odk=null, string $bno)
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/utsdeTanimsizYereVerme/ekle/essizKimlik';
         $data=array(
@@ -253,7 +253,7 @@ class UTS
         return $response;
     }
 
-    public function TanimsizYerdenIadeAlmaBildirimi(int $uti='', int $adt, string $udi='', string $uno='', string $lno='',  string $sno='', )
+    public function TanimsizYerdenIadeAlmaBildirimi(int $uti=null, int $adt, string $udi='', string $uno='', string $lno='',  string $sno='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/utsdeTanimsizYerdenIadeAlma/ekle';
         $data=array(
@@ -283,7 +283,7 @@ class UTS
         return $response;
     }
 
-    public function KullanimBildirimi(string $uno, string $lno='', string $sno='', int $adt, string $haa='', string $has='', int $tkn='', int $ykn='', string $pan='', DateTime $git, int $ktn='', string $tur='', string $dta='', string $ydm='')
+    public function KullanimBildirimi(string $uno, string $lno='', string $sno='', int $adt, string $haa='', string $has='', int $tkn=null, int $ykn=null, string $pan='', DateTime $git, int $ktn=null, string $tur='', string $dta='', string $ydm='')
     {
         if ($ydm !== 'EVET' && $ydm !== 'HAYIR' && $ydm!=='') {
             throw new \InvalidArgumentException('$ydm should be either "EVET" or "HAYIR"');
@@ -312,7 +312,7 @@ class UTS
         return $response;
     }
 
-    public function EssizKimlikBilgisiIleKullanimBildirimi(string $udi, int $adt, string $haa='', string $has='', int $tkn='', int $ykn='', string $pan='', DateTime $git='', int $ktn='', string $tur='', string $dta='', string $ydm='')
+    public function EssizKimlikBilgisiIleKullanimBildirimi(string $udi, int $adt, string $haa='', string $has='', int $tkn=null, int $ykn=null, string $pan='', DateTime $git=null, int $ktn=null, string $tur='', string $dta='', string $ydm='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/kullanim/ekle';
         $data=array(
@@ -335,7 +335,7 @@ class UTS
         return $response;
     }
 
-    public function TuketiciyeVermeBildirimi(string $uno, string $lno='', string $sno='', int $adt, string $ben='', string $tua='', string $tus='', int $tkn='', string $ykn='', string $pan='', DateTime $git='', int $ktn='', string $tur='', string $dta='', string $ydm='')
+    public function TuketiciyeVermeBildirimi(string $uno, string $lno='', string $sno='', int $adt, string $ben='', string $tua='', string $tus='', int $tkn=null, string $ykn='', string $pan='', DateTime $git=null, int $ktn=null, string $tur='', string $dta='', string $ydm='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/tuketiciyeVerme/ekle';
         $data=array(
@@ -361,7 +361,7 @@ class UTS
         return $response;
     }
 
-    public function EssizKimlikBilgisiIleTuketiciyeVermeBildirimi(string $udi,int $adt, string $ben='', string $tua='', string $tus='', int $tkn='', string $ykn='', string $pan='', DateTime $git='', int $ktn='', string $tur='', string $dta='', string $ydm='')
+    public function EssizKimlikBilgisiIleTuketiciyeVermeBildirimi(string $udi,int $adt, string $ben='', string $tua='', string $tus='', int $tkn=null, string $ykn='', string $pan='', DateTime $git=null, int $ktn=null, string $tur='', string $dta='', string $ydm='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/tuketiciyeVerme/ekle/essizKimlik';
         $data=array(
@@ -385,7 +385,7 @@ class UTS
         return $response;
     }
 
-    public function TuketicidenIadeAlmaBildirimi(int $tid, int $adt, int $vkn='', string $udi='', string $uno='', string $lno='', string $sno='')
+    public function TuketicidenIadeAlmaBildirimi(int $tid, int $adt, int $vkn=null, string $udi='', string $uno='', string $lno='', string $sno='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/tuketicidenIadeAlma/ekle';
         $data=array(
@@ -403,7 +403,7 @@ class UTS
         return $response;
     }
 
-    public function EssizKimlikBilgisiIleTuketicidenIadeAlma(string $udi, int $vkn='', int $adt)
+    public function EssizKimlikBilgisiIleTuketicidenIadeAlma(string $udi, int $vkn=null, int $adt)
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/tuketicidenIadeAlma/ekle/essizKimlik';
         $data=array(
@@ -417,7 +417,7 @@ class UTS
         return $response;
     }
     
-    public function GeciciKullanimaVermeBildirimi(string $uno, string $lno='', string $sno='', int $adt, string $tua, string $tus, int $tkn='', int $ykn='', string $pan='', DateTime $git='', int $ktn='', string $tur='', string $dta='', string $ydm='')
+    public function GeciciKullanimaVermeBildirimi(string $uno, string $lno='', string $sno='', int $adt, string $tua, string $tus, int $tkn=null, int $ykn=null, string $pan='', DateTime $git=null, int $ktn=null, string $tur='', string $dta='', string $ydm='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/geciciKullanimaVerme/ekle';
         $data=array(
@@ -442,7 +442,7 @@ class UTS
         return $response;
     }
 
-    public function EssizKimlikBilgisiIleGeciciKullanimaVermeBildirimi(string $udi, int $adt, string $tua, string $tus, int $tkn='', int $ykn='', string $pan='', DateTime $git='', int $ktn='', string $tur='', string $dta='', string $ydm='')
+    public function EssizKimlikBilgisiIleGeciciKullanimaVermeBildirimi(string $udi, int $adt, string $tua, string $tus, int $tkn=null, int $ykn=null, string $pan='', DateTime $git=null, int $ktn=null, string $tur='', string $dta='', string $ydm='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/geciciKullanimaVerme/ekle/essizKimlik';
         $data=array(
@@ -649,7 +649,7 @@ class UTS
         return $response;
     }
 
-    public function GeriCekmeAlmaBildirimi(string $gvi, int $adt, int $gkk='', string $udi='', string $uno='', string $lno='', string $sno='')
+    public function GeriCekmeAlmaBildirimi(string $gvi, int $adt, int $gkk=null, string $udi='', string $uno='', string $lno='', string $sno='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/geriCekmeAlma/ekle';
         $data=array(
@@ -667,7 +667,7 @@ class UTS
         return $response;
     }
 
-    public function EssizKimlikBilgisiIleGeriCekmeAlmaBildirimi(string $udi, int $adt, int $gkk='')
+    public function EssizKimlikBilgisiIleGeriCekmeAlmaBildirimi(string $udi, int $adt, int $gkk=null)
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/geriCekmeAlma/ekle/essizKimlik';
         $data=array(
@@ -681,7 +681,7 @@ class UTS
         return $response;
     }
 
-    public function IslahDuzelticiFaaliyetBildirimi(string $uno, string $lno='', string $sno='', int $adt, int $kun='')
+    public function IslahDuzelticiFaaliyetBildirimi(string $uno, string $lno='', string $sno='', int $adt, int $kun=null)
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/islahDuzelticiFaaliyet/ekle';
         $data=array(
@@ -697,7 +697,7 @@ class UTS
         return $response;
     }
 
-    public function EssizKimlikIleIslahDuzelticiFaaliyetBildirimi(string $udi, int $adt, int $kun='')
+    public function EssizKimlikIleIslahDuzelticiFaaliyetBildirimi(string $udi, int $adt, int $kun=null)
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/islahDuzelticiFaaliyet/ekle/essizKimlik';
         $data=array(
@@ -745,7 +745,7 @@ class UTS
         return $response; 
     }
 
-    public function HastaninVucudundanCikarmaBildirimi(string $uno, string $lno='', string $sno='', string $haa='', string $has='', int $tkn='', int $ykn='', string $pan='', string $grk, string $dga='', DateTime $git, int $ktn='', string $tur, string $dta='', string $ydm='')
+    public function HastaninVucudundanCikarmaBildirimi(string $uno, string $lno='', string $sno='', string $haa='', string $has='', int $tkn=null, int $ykn=null, string $pan='', string $grk, string $dga='', DateTime $git, int $ktn=null, string $tur, string $dta='', string $ydm='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/hastaninVucudundanCikarma/ekle';
         $data=array(
@@ -771,7 +771,7 @@ class UTS
         return $response; 
     }
 
-    public function EssizKimlikIleHastaninVucudundanCikarmaBildirimi(string $udi, string $haa='', string $has='', int $tkn='', int $ykn='', string $pan='', string $grk, string $dga='', DateTime $git, int $ktn='', string $tur, string $dta='', string $ydm='')
+    public function EssizKimlikIleHastaninVucudundanCikarmaBildirimi(string $udi, string $haa='', string $has='', int $tkn=null, int $ykn=null, string $pan='', string $grk, string $dga='', DateTime $git, int $ktn=null, string $tur, string $dta='', string $ydm='')
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/hastaninVucudundanCikarma/ekle/essizKimlik';
         $data=array(
@@ -813,7 +813,7 @@ class UTS
         return $response; 
     }
 
-    public function TuketimBildirimi(string $uno, string $lno='', string $sno, int $tyk='', DateTime $git, int $adt)
+    public function TuketimBildirimi(string $uno, string $lno='', string $sno, int $tyk=null, DateTime $git, int $adt)
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/tuketim/ekle';
         $data=array(
@@ -830,7 +830,7 @@ class UTS
         return $response; 
     }
 
-    public function HizmetSunumBildirimi(string $uno, string $lno='', string $sno, DateTime $git='', int $kun, int $bno)
+    public function HizmetSunumBildirimi(string $uno, string $lno='', string $sno, DateTime $git=null, int $kun, int $bno)
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/hizmetSunum/ekle';
         $data=array(
@@ -1036,7 +1036,7 @@ class UTS
         return $response; 
     }
 
-    public function AyrintiliTekilUrunSorgulama(string $uno, string $sno='', string $lno='', string $udi='', int $uik='', int $adt=15, int $say=0)
+    public function AyrintiliTekilUrunSorgulama(string $uno, string $sno='', string $lno='', string $udi='', int $uik=null, int $adt=15, int $say=0)
     {
         $urls=$this->Url.'UTS/rest/ayrintiliTekilUrun/sorgula';
         $data=array(
@@ -1054,7 +1054,7 @@ class UTS
         return $response; 
     }
 
-    public function AyrintiliBildirimSorgulama(string $uno, string $sno='', string $lno='', string $udi='', string $bti='', string $bdr='', string $bkt='', string $tkn='', int $dkn='', string $bno='', string $bid='', string $bzb='', string $bzs='', int $adt='', int $say=0)
+    public function AyrintiliBildirimSorgulama(string $uno, string $sno='', string $lno='', string $udi='', string $bti='', string $bdr='', string $bkt='', string $tkn='', int $dkn=null, string $bno='', string $bid='', string $bzb='', string $bzs='', int $adt=null, int $say=0)
     {
         $urls=$this->Url.'UTS/uh/rest/ayrintiliBildirim/sorgula';
         $data=array(
@@ -1156,7 +1156,7 @@ class UTS
         return $response; 
     }
 
-    public function PaketEkle(string $pno, string $tip='', int $kno, string $pli='', array $tul='')
+    public function PaketEkle(string $pno, string $tip='', int $kno, string $pli='', array $tul=null)
     {
         $urls=$this->Url.'UTS/uh/rest/pts/paket/ekle';
         $data=array(
@@ -1222,7 +1222,7 @@ class UTS
         return $response; 
     }
 
-    public function KurumaGelenPaketleriSorgula(DateTime $ekt='', DateTime $ebt='', string $okb='', int $kno='')
+    public function KurumaGelenPaketleriSorgula(DateTime $ekt=null, DateTime $ebt=null, string $okb='', int $kno=null)
     {
         $urls=$this->Url.'UTS/uh/rest/pts/gelenPaket/sorgula';
         $data=array(
@@ -1237,7 +1237,7 @@ class UTS
         return $response; 
     }
 
-    public function FirmaSorgulama(string $mrs='', string $vrg, string $unv='', int $krn='', string $cky='')
+    public function FirmaSorgulama(string $mrs='', string $vrg, string $unv='', int $krn=null, string $cky='')
     {
         $urls=$this->Url.'UTS/rest/kurum/firmaSorgula';
         $data=array(
@@ -1265,7 +1265,7 @@ class UTS
         return $response;  
     }
 
-    public function ButunUrunleriSorgulama(int $sayfabuyuklugu, int $sayfaindeksi, DateTime $baslangictarihi='', DateTime $bitistarihi='')
+    public function ButunUrunleriSorgulama(int $sayfabuyuklugu, int $sayfaindeksi, DateTime $baslangictarihi=null, DateTime $bitistarihi=null)
     {
         $urls=$this->Url.'UTS/rest/tibbiCihaz/tibbiCihazSorgula';
         $data=array(
@@ -1301,7 +1301,8 @@ class UTS
         {
             $response = $client->post($url, [
                 'headers' => $headers,
-                'json' => $data
+                'json' => $data,
+                'verify' => !$this->Test
             ]);
 
             return $response->getBody()->getContents();
