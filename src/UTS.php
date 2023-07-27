@@ -966,7 +966,23 @@ class UTS
         return $response; 
     }
 
-    public function KabulEdilecekGeriCekilmisTekilUrunSorgula(int $gkk, string $bno, string $uno='', string $bid='', int $san=1)
+    public function KabulEdilecekTekilUrunSorgulaKayitSayisi(int $gkk=null, string $bno='', string $uno='', int $adt=20, int $off=null)
+    {
+        $urls=$this->Url.'UTS/uh/rest/bildirim/alma/bekleyenler/sorgula/offset';
+        $data=array(
+            'GKK'=>$gkk,
+            'BNO'=>$bno,
+            'UNO'=>$uno,
+            'ADT'=>$adt,
+            'OFF'=>$off
+        );
+
+        $response=$this->PostMethod($data,$urls);
+
+        return $response; 
+    }
+
+    public function KabulEdilecekGeriCekilmisTekilUrunSorgula(int $gkk, string $bno, string $uno="", string $bid="", int $san=1)
     {
         $urls=$this->Url.'UTS/uh/rest/bildirim/geriCekmeAlma/bekleyenler';
         $data=array(
